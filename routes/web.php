@@ -18,3 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->middleware('verified');
+
+Route::resource('qrcodes', 'QrcodeController');
+
+Route::resource('roles', 'RoleController');
+
+Route::resource('transactions', 'TransactionController');
+
+Route::resource('users', 'UserController');
